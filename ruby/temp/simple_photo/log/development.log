@@ -1,0 +1,2866 @@
+  [1m[36m (26.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePhotos (20140120104302)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "photos" ("id" serial primary key, "title" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (6.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140120104302"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 19:00:59 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 35ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 19:02:09 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 768ms (Views: 749.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:02:10 +0800
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 19:03:05 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (26.4ms)
+  Rendered photos/new.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 44ms (Views: 36.0ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/photos" for 127.0.0.1 at 2014-01-20 19:03:35 +0800
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "photo"=>{"title"=>"John", "description"=>"John Lui"}, "commit"=>"Create Photo"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.8ms)[0m  INSERT INTO "photos" ("created_at", "description", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Mon, 20 Jan 2014 11:03:35 UTC +00:00], ["description", "John Lui"], ["title", "John"], ["updated_at", Mon, 20 Jan 2014 11:03:35 UTC +00:00]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos/1
+Completed 302 Found in 23ms (ActiveRecord: 18.6ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 19:03:35 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (0.8ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:03:40 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 19:03:44 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (1.4ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:03:45 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/photos/1/edit" for 127.0.0.1 at 2014-01-20 19:03:46 +0800
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (0.6ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/_form.html.erb (2.0ms)
+  Rendered photos/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:03:48 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.6ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/photos/1/edit" for 127.0.0.1 at 2014-01-20 19:03:53 +0800
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (0.7ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/_form.html.erb (2.9ms)
+  Rendered photos/edit.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.7ms)
+
+
+Started PATCH "/photos/1" for 127.0.0.1 at 2014-01-20 19:04:00 +0800
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "photo"=>{"title"=>"John", "description"=>"John Lui Super"}, "commit"=>"Update Photo", "id"=>"1"}
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "photos" SET "description" = $1, "updated_at" = $2 WHERE "photos"."id" = 1[0m  [["description", "John Lui Super"], ["updated_at", Mon, 20 Jan 2014 11:04:00 UTC +00:00]]
+  [1m[35m (6.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos/1
+Completed 302 Found in 12ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 19:04:00 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:04:02 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (1.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 19:04:20 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (3.7ms)
+  Rendered photos/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:04:21 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.8ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:04:59 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:05:07 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:05:08 +0800
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (1.1ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 57ms (Views: 30.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:17:28 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:17:31 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.7ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 19:18:02 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (12.2ms)
+  Rendered photos/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:18:05 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.8ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/photos/1/edit" for 127.0.0.1 at 2014-01-20 19:18:16 +0800
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered photos/_form.html.erb (3.4ms)
+  Rendered photos/edit.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:18:18 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (1.5ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 19:18:19 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (3.1ms)
+  Rendered photos/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:18:20 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAttachmentImageToPhotos (20140120114810)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "photos" ADD COLUMN "image_file_name" character varying(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "photos" ADD COLUMN "image_content_type" character varying(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "photos" ADD COLUMN "image_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "photos" ADD COLUMN "image_updated_at" timestamp
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140120114810"]]
+  [1m[35m (2.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 19:50:44 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 66ms (Views: 40.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:50:45 +0800
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 19:50:47 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (20.1ms)
+  Rendered photos/new.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 32ms (Views: 30.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "photo"=>{"title"=>"Green", "description"=>"promo", "image"=>#<ActionDispatch::Http::UploadedFile:0x00000101624a60 @tempfile=#<Tempfile:/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/RackMultipart20140120-5408-1i16fo1>, @original_filename="icon.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"icon.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Photo"}
+Unpermitted parameters: image
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  INSERT INTO "photos" ("created_at", "description", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Mon, 20 Jan 2014 11:51:11 UTC +00:00], ["description", "promo"], ["title", "Green"], ["updated_at", Mon, 20 Jan 2014 11:51:11 UTC +00:00]]
+  [1m[36m (6.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos/2
+Completed 302 Found in 15ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPhoto Load (0.7ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:51:11 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:51:13 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 14ms (Views: 10.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:54:46 +0800
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:54:48 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPhoto Load (0.7ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:55:02 +0800
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:55:04 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPhoto Load (0.6ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000101efd6c8>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2163751780'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.1ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:55:04 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000104e8fc10>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2188668620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.3ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:57:52 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000101e97058>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2188668620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (32.4ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:57:53 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPhoto Load (0.7ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000101f667e0>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2188668620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.9ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:57:54 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPhoto Load (1.1ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000104e37bf0>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2188668620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.8ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:57:54 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000101df4678>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2188668620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.3ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:57:54 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered photos/show.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 4ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x0000010297aa38>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__2151953853200244576_2188668620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 19:58:06 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:07 +0800
+
+
+Started DELETE "/photos/2" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+Processing by PhotosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "id"=>"2"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "photos" WHERE "photos"."id" = $1[0m  [["id", 2]]
+  [1m[35m (2.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 6ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:58:10 +0800
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 19:58:11 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (4.8ms)
+  Rendered photos/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for 127.0.0.1 at 2014-01-20 19:58:23 +0800
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "photo"=>{"title"=>"green", "description"=>"promo", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000010154e410 @tempfile=#<Tempfile:/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/RackMultipart20140120-5408-195dr59>, @original_filename="icon.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"icon.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Photo"}
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: image):
+  app/controllers/photos_controller.rb:27:in `create'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.0ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:59:34 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPhoto Load (0.8ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "2"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Photo with id=2):
+  app/controllers/photos_controller.rb:67:in `set_photo'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:59:34 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Photo with id=2):
+  app/controllers/photos_controller.rb:67:in `set_photo'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.5ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.8ms)
+
+
+Started GET "/photos/2" for 127.0.0.1 at 2014-01-20 19:59:48 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPhoto Load (1.2ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "2"]]
+Completed 404 Not Found in 25ms
+
+ActiveRecord::RecordNotFound (Couldn't find Photo with id=2):
+  app/controllers/photos_controller.rb:67:in `set_photo'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 34ms (Views: 32.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 19:59:54 +0800
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 20:01:21 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (1.1ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000106c71530>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url(:medium) %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__3746970194471951261_2204326620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.9ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 20:01:21 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x0000010304b268>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url(:medium) %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__3746970194471951261_2172798960'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 20:01:54 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (undefined method `url' for #<Photo:0x000001068b2930>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.url(:medium) %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__3746970194471951261_2202371220'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:06:52 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.5ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 2328ms (Views: 2307.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:06:55 +0800
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 20:07:00 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (11.8ms)
+  Rendered photos/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 32ms (Views: 30.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:00 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:00 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:00 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:00 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:07:04 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.6ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:04 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:04 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:04 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:07:04 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:08:30 +0800
+Processing by PhotosController#index as HTML
+ERROR: compiling _app_views_photos_index_html_erb__768469812536250193_2221170820 RAISED /Users/BEN/Desktop/code/temp/simple_photo/app/views/photos/index.html.erb:19: syntax error, unexpected '='
+...( link_to 'Show', photo, class="button" );@output_buffer.saf...
+...                               ^
+Function body:           def _app_views_photos_index_html_erb__768469812536250193_2221170820(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "photos/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_append='<h1>Listing photos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+';     @photos.each do |photo| 
+@output_buffer.safe_append='      <tr>
+        <td>';@output_buffer.append=( photo.title );@output_buffer.safe_append='</td>
+        <td>';@output_buffer.append=( photo.description );@output_buffer.safe_append='</td>
+        <td>';@output_buffer.append=( link_to 'Show', photo, class="button" );@output_buffer.safe_append='</td>
+        <td>';@output_buffer.append=( link_to 'Edit', edit_photo_path(photo) );@output_buffer.safe_append='</td>
+        <td>';@output_buffer.append=( link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } );@output_buffer.safe_append='</td>
+      </tr>
+';     end 
+@output_buffer.safe_append='  </tbody>
+</table>
+
+<br>
+
+';@output_buffer.append=( link_to 'New Photo', new_photo_path );@output_buffer.safe_append='
+';@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `module_eval'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `compile'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:248:in `block in compile!'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `synchronize'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `compile!'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:142:in `block in render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:97:in `render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:413:in `_run__4374210884650828535__process_action__callbacks'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:136:in `process'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:44:in `process'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal.rb:195:in `dispatch'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_controller/metal.rb:231:in `block in action'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `each'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.2/lib/active_record/query_cache.rb:36:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activerecord-4.0.2/lib/active_record/migration.rb:369:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:373:in `_run__3711360585324236193__call__callbacks'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `block in call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:25:in `tagged'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `tagged'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/activesupport-4.0.2/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/static.rb:64:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/engine.rb:511:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/application.rb:97:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/Users/BEN/.rvm/gems/ruby-2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+/Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+/Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+  Rendered photos/index.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (/Users/BEN/Desktop/code/temp/simple_photo/app/views/photos/index.html.erb:19: syntax error, unexpected '='
+...( link_to 'Show', photo, class="button" );@output_buffer.saf...
+...                               ^):
+    16:       <tr>
+    17:         <td><%= photo.title %></td>
+    18:         <td><%= photo.description %></td>
+    19:         <td><%= link_to 'Show', photo, class="button" %></td>
+    20:         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+    21:         <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:       </tr>
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.2) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.2) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.2) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:49:in `block (2 levels) in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:48:in `block in render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:56:in `render_with_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:413:in `_run__4374210884650828535__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__3711360585324236193__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/BEN/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:08:49 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:09:51 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 1152ms (Views: 1151.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:09:52 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.6ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 20ms (Views: 15.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:03 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:10:57 +0800
+
+
+Started POST "/photos" for 127.0.0.1 at 2014-01-20 20:15:21 +0800
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "photo"=>{"title"=>"green", "description"=>"promo", "image"=>#<ActionDispatch::Http::UploadedFile:0x00000105836ed0 @tempfile=#<Tempfile:/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/RackMultipart20140120-5508-1uircoy>, @original_filename="icon.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"icon.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Photo"}
+Completed 500 Internal Server Error in 9ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: image):
+  app/controllers/photos_controller.rb:27:in `create'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:23 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:15:26 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 1125ms (Views: 1124.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:15:27 +0800
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 20:15:28 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPhoto Load (1.5ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x0000010b31d8a8>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url(:medium) %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__3836963127781075114_2245735620'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 20:15:28 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `image' for #<Photo:0x00000108c7e4b8>):
+    12: 
+    13: <p>
+    14:   <strong>Image:</strong>
+    15:   <%= @photo.image.url(:medium) %>
+    16: </p>
+    17: 
+    18: <%= link_to '編輯', edit_photo_path(@photo) %> |
+  app/views/photos/show.html.erb:15:in `_app_views_photos_show_html_erb__3836963127781075114_2221099740'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:49 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPhoto Load (0.8ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered photos/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:50 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:16:52 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (1.0ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 18ms (Views: 16.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:52 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:52 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:52 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:52 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:52 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:53 +0800
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (2.2ms)
+  Rendered photos/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:16:54 +0800
+
+
+Started POST "/photos" for 127.0.0.1 at 2014-01-20 20:17:04 +0800
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "photo"=>{"title"=>"green", "description"=>"promo", "image"=>#<ActionDispatch::Http::UploadedFile:0x00000102fa85e0 @tempfile=#<Tempfile:/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/RackMultipart20140120-5508-vi5v43>, @original_filename="icon.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"icon.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Photo"}
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: identify -format %m '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: identify -format %m '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: identify -format %m '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: convert '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]' -auto-orient -resize "300x300>" '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl20140120-5508-3x7ort'
+Command :: file -b --mime '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl20140120-5508-3x7ort'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: identify -format %m '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: identify -format %m '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: identify -format %m '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]'
+Command :: convert '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl.png[0]' -auto-orient -resize "100x100>" '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl20140120-5508-1wiawg2'
+Command :: file -b --mime '/var/folders/9p/b_qfljp10vbf3xq12hjl6j580000gn/T/icon20140120-5508-y4g3cl20140120-5508-1wiawg2'
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (4.5ms)[0m  [1mINSERT INTO "photos" ("created_at", "description", "image_content_type", "image_file_name", "image_file_size", "image_updated_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", Mon, 20 Jan 2014 12:17:05 UTC +00:00], ["description", "promo"], ["image_content_type", "image/png"], ["image_file_name", "icon.png"], ["image_file_size", 89257], ["image_updated_at", Mon, 20 Jan 2014 12:17:04 UTC +00:00], ["title", "green"], ["updated_at", Mon, 20 Jan 2014 12:17:05 UTC +00:00]]
+  [1m[35m (6.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos/3
+Completed 302 Found in 461ms (ActiveRecord: 11.7ms)
+
+
+Started GET "/photos/3" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPhoto Load (0.4ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  Rendered photos/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 27ms (Views: 24.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:05 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:10 +0800
+
+
+Started GET "/photos/3" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPhoto Load (0.6ms)[0m  [1mSELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  Rendered photos/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20ms (Views: 18.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:11 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (1.4ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:17:17 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:17 +0800
+
+
+Started GET "/photos/3" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPhoto Load (0.7ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "3"]]
+  Rendered photos/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 23ms (Views: 19.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:19 +0800
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+Processing by PhotosController#index as HTML
+  [1m[36mPhoto Load (0.5ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:20 +0800
+
+
+Started DELETE "/photos/3" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+Processing by PhotosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vzCkrRusmA9G+FvhBrhMq7LDLbaoEyNZ9JY3D79luaY=", "id"=>"3"}
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", "3"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "photos" WHERE "photos"."id" = $1  [["id", 3]]
+[paperclip] deleting /Users/BEN/Desktop/code/temp/simple_photo/public/system/photos/images/000/000/003/original/icon.png
+[paperclip] deleting /Users/BEN/Desktop/code/temp/simple_photo/public/system/photos/images/000/000/003/medium/icon.png
+[paperclip] deleting /Users/BEN/Desktop/code/temp/simple_photo/public/system/photos/images/000/000/003/thumb/icon.png
+  [1m[36m (5.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 15ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+Processing by PhotosController#index as HTML
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:27 +0800
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 20:18:28 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (18.6ms)
+  Rendered photos/new.html.erb within layouts/application (20.1ms)
+Completed 500 Internal Server Error in 25ms
+
+ActionView::Template::Error (undefined local variable or method `users_path' for #<#<Class:0x0000010af55090>:0x00000104296940>):
+    1: <%= form_for @photo, :url => users_path, :html => { :multipart => true } do |f| %>
+    2:   <% if @photo.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+  app/views/photos/_form.html.erb:1:in `_app_views_photos__form_html_erb___4395923757775424688_2182328520'
+  app/views/photos/new.html.erb:3:in `_app_views_photos_new_html_erb__2338937876304400188_2197188160'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.6ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 20:18:29 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (10.4ms)
+  Rendered photos/new.html.erb within layouts/application (11.4ms)
+Completed 500 Internal Server Error in 14ms
+
+ActionView::Template::Error (undefined local variable or method `users_path' for #<#<Class:0x0000010af55090>:0x00000102dcb8d0>):
+    1: <%= form_for @photo, :url => users_path, :html => { :multipart => true } do |f| %>
+    2:   <% if @photo.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+  app/views/photos/_form.html.erb:1:in `_app_views_photos__form_html_erb___4395923757775424688_2171395800'
+  app/views/photos/new.html.erb:3:in `_app_views_photos_new_html_erb__2338937876304400188_2171486600'
+
+
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/BEN/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.6ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+Processing by PhotosController#new as HTML
+  Rendered photos/_form.html.erb (2.6ms)
+  Rendered photos/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/photos.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/vendor/modernizr.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.abide.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.accordion.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.clearing.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.dropdown.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.alert.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.interchange.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.joyride.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.magellan.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.offcanvas.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.tab.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.tooltip.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.orbit.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.reveal.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation/foundation.topbar.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/foundation.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
+
+
+Started GET "/assets/photos.js?body=1" for 127.0.0.1 at 2014-01-20 20:18:47 +0800
